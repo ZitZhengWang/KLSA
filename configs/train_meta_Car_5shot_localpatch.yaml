@@ -1,0 +1,51 @@
+train_dataset: image_folder_spec
+train_dataset_args: {
+    root_path: /home/zit/21class/ZhengWang/Datasets/StanfordCar/Images,
+    split: train,
+    image_size: 84,
+    patch_size: 21,
+    patch_num: 36,
+    augment: Resize_Crop,
+    local_augment: local_Crop}
+
+tval_dataset: image_folder_spec
+tval_dataset_args: {
+    root_path: /home/zit/21class/ZhengWang/Datasets/StanfordCar/Images,
+    split: test,
+    image_size: 84,
+    patch_size: 21,
+    patch_num: 36,
+    local_augment: local_Crop}
+
+val_dataset: image_folder_spec
+val_dataset_args: {
+    root_path: /home/zit/21class/ZhengWang/Datasets/StanfordCar/Images,
+    split: val,
+    image_size: 84,
+    patch_size: 21,
+    patch_num: 36,
+    local_augment: local_Crop}
+
+model: KLSANet
+model_args:
+    encoder: resnet12
+    encoder_args: {}
+    method: SSMM
+    method_args: {neighbor_k: 15}
+    use_BGF: True
+    threshold: 0
+    weight: True
+
+load_encoder: save/classifier_image_folder_spec_resnet12_Car/epoch-last.pth
+
+n_way: 5
+n_shot: 5
+n_query: 15
+train_batches: 600
+ep_per_batch: 1
+
+max_epoch: 150
+optimizer: adam
+optimizer_args: {lr: 0.01}
+
+visualize_datasets: False

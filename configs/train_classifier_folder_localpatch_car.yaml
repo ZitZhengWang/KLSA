@@ -1,0 +1,38 @@
+train_dataset: image_folder_spec
+train_dataset_args: {
+    root_path: /home/zit/21class/ZhengWang/Datasets/StanfordCar/Images,
+    split: train,
+    image_size: 84,
+    augment: Resize_Crop}
+
+val_dataset: image_folder_spec
+val_dataset_args: {
+    root_path: /home/zit/21class/ZhengWang/Datasets/StanfordCar/Images,
+    split: train,
+    image_size: 84}
+
+fs_dataset: image_folder_spec
+fs_dataset_args: {
+    root_path: /home/zit/21class/ZhengWang/Datasets/StanfordCar/Images,
+    split: test,
+    image_size: 84,
+    patch_size: 21,
+    patch_num: 36,
+    local_augment: local_Crop}
+eval_fs_epoch: 10
+
+model: classifier
+model_args:
+    encoder: Conv4
+    encoder_args: {}
+    classifier: linear-classifier 
+    classifier_args: {n_classes: 130}
+
+
+batch_size: 128
+max_epoch: 250
+optimizer: adam
+optimizer_args: {lr: 0.01}
+
+save_epoch: 5
+visualize_datasets: false

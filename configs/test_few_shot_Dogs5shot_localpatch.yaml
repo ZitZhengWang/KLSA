@@ -1,0 +1,12 @@
+dataset: image_folder_spec
+dataset_args: {
+    root_path: /home/zit/21class/ZhengWang/Datasets/StanfordDog/Images,
+    split: test,
+    image_size: 84,
+    patch_size: 21,
+    patch_num: 36,
+    local_augment: local_Crop}
+
+shot: 5
+#load: ./save/MODEL_FOLDER/EPOCH_X.pth
+#load: save/meta_image_folder_spec-5shot_meta-baseline-resnet12_CUB_2+/max-va.pth
